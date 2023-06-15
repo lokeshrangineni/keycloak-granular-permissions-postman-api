@@ -27,7 +27,7 @@ Import the postman collection from the [github location](https://github.com/loke
 | tokenRealm | Realm to get the token for creating the data | master |
 | username | username to get the token for creating the data | admin |
 | password | password to get the token for creating the data | password |
-| realm | realm where the groups will be created | Redhat-external |
+| realm | realm where the groups will be created | redhat-external |
 | parentGroupName | Parent group name used to create the data | customer1 |
 | orgAttributeName | org_name attribute with the value of this variable will be added to group | IDP Customer |
 | orgAttributeID | org_id attribute with the value of this variable will be added to group | 1234 |

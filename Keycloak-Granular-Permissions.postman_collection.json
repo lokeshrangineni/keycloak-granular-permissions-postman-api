@@ -278,7 +278,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n        \"username\": \"{{addingGroupAdmin.UserName}}\",\n        \"enabled\": true,\n        \"totp\": false,\n        \"emailVerified\": true,\n        \"email\":\"{{addingGroupAdmin.Email}}\",\n        \"firstName\": \"{{addingGroupAdmin.UserName}} fn\",\n        \"lastName\": \"{{addingGroupAdmin.UserName}} ln\",\n        \"groups\":[\"{{adminsChildGroupPath}}\"],\n        \"credentials\":[{\"type\":\"password\",\"value\":\"{{addingGroupAdmin.Password}}\",\"temporary\":false}]\n}"
+					"raw": "{\n    \"username\": \"{{addingGroupAdmin.UserName}}\",\n    \"enabled\": true,\n    \"totp\": false,\n    \"emailVerified\": true,\n    \"email\": \"{{addingGroupAdmin.Email}}\",\n    \"firstName\": \"{{addingGroupAdmin.UserName}} fn\",\n    \"lastName\": \"{{addingGroupAdmin.UserName}} ln\",\n    \"groups\": [\n        \"{{adminsChildGroupPath}}\"\n    ],\n    \"credentials\": [\n        {\n            \"type\": \"password\",\n            \"value\": \"{{addingGroupAdmin.Password}}\",\n            \"temporary\": false\n        }\n    ],\n    \"attributes\": {\n        \"approved\": [\n            \"true\"\n        ]\n    }\n}"
 				},
 				"url": {
 					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/users",
@@ -323,7 +323,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"name\":\"{{parentGroupName}}-group-admin-role\",\"description\":\"Whoever owns this role will be the admins to the group - {{parentGroupName}}.\"}"
+					"raw": "{\"name\":\"{{parentGroupName}}-group-admin-role\",\"description\":\"Customer admin of - {{parentGroupName}}.\"}"
 				},
 				"url": {
 					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/roles",
