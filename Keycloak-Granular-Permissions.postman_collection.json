@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "7ce3d965-d00b-4cd6-bd04-dcc648c743f3",
+		"_postman_id": "f9d40051-8752-436d-b851-0a9bb37a4553",
 		"name": "Keycloak-Granular-permissions-data-setup",
 		"description": "Import the postman collection from the github from below location.\n\nOnce you import into postman --> Double click on collection(folder) --> Update variables --> Make sure that you are referring to the correct environment where you want to create the group data --> click on Run to run the collection --> check the progress on postman console --> Once the script is completed validate the data on keycloak.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "1777460"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -47,9 +46,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{keycloak_gran_permissions_host}}/realms/master/protocol/openid-connect/userinfo",
+					"raw": "{{keycloak_url_prefix}}/realms/master/protocol/openid-connect/userinfo",
 					"host": [
-						"{{keycloak_gran_permissions_host}}"
+						"{{keycloak_url_prefix}}"
 					],
 					"path": [
 						"realms",
@@ -287,7 +286,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"users\",\n    \"attributes\": {\n        \"org_admin\": [\"true\"]\n    }\n}"
+					"raw": "{\n    \"name\": \"users\",\n    \"attributes\": {\n        \"org_admin\": [\"false\"]\n    }\n}"
 				},
 				"url": {
 					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/groups/{{parentGroupInfoID}}/children",
@@ -307,7 +306,7 @@
 			"response": []
 		},
 		{
-			"name": "Create a user and assign to group",
+			"name": "Create a user and assign to admin group",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
 					"content-type": true
@@ -334,7 +333,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n        \"username\": \"{{parentGroupName}}admin1\",\n        \"enabled\": true,\n        \"totp\": false,\n        \"emailVerified\": false,\n        \"firstName\": \"{{parentGroupName}}admin1 fn\",\n        \"lastName\": \"{{parentGroupName}}admin1 ln\",\n        \"groups\":[\"{{adminsChildGroupPath}}\"]\n}"
+					"raw": "{\n        \"username\": \"{{parentGroupName}}admin1\",\n        \"enabled\": true,\n        \"totp\": false,\n        \"emailVerified\": false,\n        \"firstName\": \"{{parentGroupName}}admin1 fn\",\n        \"lastName\": \"{{parentGroupName}}admin1 ln\",\n        \"groups\":[\"{{adminsChildGroupPath}}\"],\n        \"credentials\":[{\"type\":\"password\",\"value\":\"password\",\"temporary\":false}]\n}"
 				},
 				"url": {
 					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/users",
@@ -1160,20 +1159,12 @@
 			"value": "admin"
 		},
 		{
-			"key": "bearerToken",
-			"value": ""
-		},
-		{
 			"key": "parentGroupName",
 			"value": "customer1"
 		},
 		{
 			"key": "realm",
 			"value": "data_setup_automation"
-		},
-		{
-			"key": "parentGroupInfo",
-			"value": ""
 		},
 		{
 			"key": "orgAttributeName",
