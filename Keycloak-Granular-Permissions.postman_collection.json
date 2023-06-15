@@ -1,531 +1,53 @@
 {
 	"info": {
-		"_postman_id": "63f63ce3-ebec-4109-9c7b-d765e2f643be",
-		"name": "Keycloak-Granular-Permissions",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "7ce3d965-d00b-4cd6-bd04-dcc648c743f3",
+		"name": "Keycloak-Granular-permissions-data-setup",
+		"description": "Import the postman collection from the github from below location.\n\nOnce you import into postman --> Double click on collection(folder) --> Update variables --> Make sure that you are referring to the correct environment where you want to create the group data --> click on Run to run the collection --> check the progress on postman console --> Once the script is completed validate the data on keycloak.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1777460"
 	},
 	"item": [
 		{
-			"name": "changine the group user to group admin",
-			"item": [
-				{
-					"name": "Get Token",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItZkFBZTZyYWwyUXRWQ1BFekotTExHSGRXWVpRZ3kwbWZKR0p5bzNhUDZzIn0.eyJleHAiOjE2ODU2NTU3OTUsImlhdCI6MTY4NTY0ODU5NSwianRpIjoiODRhNzgyN2MtYTE5NS00NjQzLWJiNmItMDgzOGYzOGZlY2Q0IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI2NDc5Mzc2ZS01YmMzLTRkOWQtOTc3Yy1hZTllOGM5MzhjZDkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiNWFlYzE5YmMtMzY2NS00NjEyLWI5OTYtYzk0MjU3MjI5YjlmIiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiI1YWVjMTliYy0zNjY1LTQ2MTItYjk5Ni1jOTQyNTcyMjliOWYiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.hsKcWE0dJkrk09mGRT5zRQ5i0EYnFfB3sVA4GI4f23Ujk7xZRlWDl_hjyoTimZlYr6O8vxJREOd7Tod9eTLhEgPvY3SOha8hBa1SoXCVE7pwSsTcQS92rMn2K9BWqaz4hfcUt1UAUSglnLJaBEX5rggodtlEBO8Ld7UfEHPgasgXnowFEyopVxH0pT5ruCmIhh0rGiRApQlj5X8q3oCcBwRvq0IqlX9fN15EotDDAsHc0BTxG8NfJVabdHGWwvqJCr_c_C-E54eTEyuudC2gwMkDY6UTp5db98RirRMbISQndj76ETN50r6JOWYgumLPJVYrMtgJn-7dm3nf9FMorw",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "client_id",
-									"value": "admin-cli",
-									"type": "text"
-								},
-								{
-									"key": "grant_type",
-									"value": "password",
-									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "admin",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "password",
-									"type": "text"
-								},
-								{
-									"key": "client_secret",
-									"value": "8DMrNQNeWksxsuY7JQMus2BJIgQWYpOC",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "grant_type",
-									"value": "client_credentials",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "scope",
-									"value": "openid",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://{{keycloak_gran_permissions_host}}/realms/master/protocol/openid-connect/token",
-							"protocol": "https",
-							"host": [
-								"{{keycloak_gran_permissions_host}}"
-							],
-							"path": [
-								"realms",
-								"master",
-								"protocol",
-								"openid-connect",
-								"token"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add user to the group",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"content-type": true
-						}
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJBUWR5bjFudGRhbGxDeWlfLVdhbWVON1RrX3l6dU14d2ozcmwydkw5d0EwIn0.eyJleHAiOjE2ODU5NTAyOTAsImlhdCI6MTY4NTkzOTQ5MCwianRpIjoiNjllNTY0YzItOGZlNi00MmM5LWIwZDctMDA0NzZlMWQ5Y2EwIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9ncm91cC1wZXJtaXNzaW9ucy10ZXN0Iiwic3ViIjoiNWM4MDRiMWYtODY4MS00ZjIyLThlOWQtNTEyODk5YjA4ZGM0IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYWRtaW4tY2xpIiwic2Vzc2lvbl9zdGF0ZSI6IjI0MmViNTI1LTZkZWQtNGQzOS05OGVmLTdjNmFhYzUxMTQ5YSIsImFjciI6IjEiLCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIiwic2lkIjoiMjQyZWI1MjUtNmRlZC00ZDM5LTk4ZWYtN2M2YWFjNTExNDlhIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJjdXN0b21lcjNhZG1pbjEgZm4gY3VzdG9tZXIzYWRtaW4xIGxuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiY3VzdG9tZXIzYWRtaW4xIiwiZ2l2ZW5fbmFtZSI6ImN1c3RvbWVyM2FkbWluMSBmbiIsImZhbWlseV9uYW1lIjoiY3VzdG9tZXIzYWRtaW4xIGxuIiwiZW1haWwiOiJjdXN0b21lcjNhZG1pbjFAcmVkaGF0LmNvbSJ9.V3m6R1aCkii9yWHLI5z1SDE7e6KQI6ktuc77RuG4omsX-8Bdc1FIQdFlyOZIX2NZsJOZT659AxWeOXnPsD3iSSGfGai_p2rw6fjor1UmkUDM9T7yfSByashEciK4gIe7upRL-x5e3YXh5ro_mfI0D41nyjlN-nUpNuvRheTwdxhd5wiKfEO41We1DVEj8z18pmKERt7Skk6OoRYLnwBN5gGeGQ83VohHdsgesDo93ofpW5RGPpMbsnZAgiOqpXb5KrPR0MftWhrFyDfCYYqhQ8dsdMee6GTAEjaR7BYfr2HCj_ittw9mjeCSpv5d2KYiQ1A_F3LS947_uWrAyZlPcA",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://keycloak-fips-test.apps.fips-key.2vn8.p1.openshiftapps.com/admin/realms/group-permissions-test/users/5b74579b-a95e-4a82-b4f4-b52cc79c51d7/groups/24695d7a-8580-4f03-91a4-490d8bb8d084",
-							"protocol": "https",
-							"host": [
-								"keycloak-fips-test",
-								"apps",
-								"fips-key",
-								"2vn8",
-								"p1",
-								"openshiftapps",
-								"com"
-							],
-							"path": [
-								"admin",
-								"realms",
-								"group-permissions-test",
-								"users",
-								"5b74579b-a95e-4a82-b4f4-b52cc79c51d7",
-								"groups",
-								"24695d7a-8580-4f03-91a4-490d8bb8d084"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete user from the group",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"content-type": true
-						}
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJBUWR5bjFudGRhbGxDeWlfLVdhbWVON1RrX3l6dU14d2ozcmwydkw5d0EwIn0.eyJleHAiOjE2ODU5NTAyOTAsImlhdCI6MTY4NTkzOTQ5MCwianRpIjoiNjllNTY0YzItOGZlNi00MmM5LWIwZDctMDA0NzZlMWQ5Y2EwIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9ncm91cC1wZXJtaXNzaW9ucy10ZXN0Iiwic3ViIjoiNWM4MDRiMWYtODY4MS00ZjIyLThlOWQtNTEyODk5YjA4ZGM0IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYWRtaW4tY2xpIiwic2Vzc2lvbl9zdGF0ZSI6IjI0MmViNTI1LTZkZWQtNGQzOS05OGVmLTdjNmFhYzUxMTQ5YSIsImFjciI6IjEiLCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIiwic2lkIjoiMjQyZWI1MjUtNmRlZC00ZDM5LTk4ZWYtN2M2YWFjNTExNDlhIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJjdXN0b21lcjNhZG1pbjEgZm4gY3VzdG9tZXIzYWRtaW4xIGxuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiY3VzdG9tZXIzYWRtaW4xIiwiZ2l2ZW5fbmFtZSI6ImN1c3RvbWVyM2FkbWluMSBmbiIsImZhbWlseV9uYW1lIjoiY3VzdG9tZXIzYWRtaW4xIGxuIiwiZW1haWwiOiJjdXN0b21lcjNhZG1pbjFAcmVkaGF0LmNvbSJ9.V3m6R1aCkii9yWHLI5z1SDE7e6KQI6ktuc77RuG4omsX-8Bdc1FIQdFlyOZIX2NZsJOZT659AxWeOXnPsD3iSSGfGai_p2rw6fjor1UmkUDM9T7yfSByashEciK4gIe7upRL-x5e3YXh5ro_mfI0D41nyjlN-nUpNuvRheTwdxhd5wiKfEO41We1DVEj8z18pmKERt7Skk6OoRYLnwBN5gGeGQ83VohHdsgesDo93ofpW5RGPpMbsnZAgiOqpXb5KrPR0MftWhrFyDfCYYqhQ8dsdMee6GTAEjaR7BYfr2HCj_ittw9mjeCSpv5d2KYiQ1A_F3LS947_uWrAyZlPcA",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://keycloak-fips-test.apps.fips-key.2vn8.p1.openshiftapps.com/admin/realms/group-permissions-test/users/5b74579b-a95e-4a82-b4f4-b52cc79c51d7/groups/c88eb883-9996-456f-84ac-2e1bc7a22ebc",
-							"protocol": "https",
-							"host": [
-								"keycloak-fips-test",
-								"apps",
-								"fips-key",
-								"2vn8",
-								"p1",
-								"openshiftapps",
-								"com"
-							],
-							"path": [
-								"admin",
-								"realms",
-								"group-permissions-test",
-								"users",
-								"5b74579b-a95e-4a82-b4f4-b52cc79c51d7",
-								"groups",
-								"c88eb883-9996-456f-84ac-2e1bc7a22ebc"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get user's groups",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"content-type": true
-						}
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJybXZnUFk5WEEyZkNmZUJOVXZXbUpzZG52OXFxOERjU3RhUjF5cXhtNDdjIn0.eyJleHAiOjE2ODU3MjEzODgsImlhdCI6MTY4NTcxNDE4OCwianRpIjoiYzdmOGE4ODAtNmVhNy00ZjhlLTg5MDYtYWE1MjZkMDEwNWQ5IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9ncm91cC1wZXJtaXNzaW9ucy10ZXN0Iiwic3ViIjoiM2M5NGE1ZGYtMDMyMC00MzAxLWEzMjctZDYwZjdiZjliYmQ3IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYWRtaW4tY2xpIiwic2Vzc2lvbl9zdGF0ZSI6IjQ4OTNkNWFjLTlhNzctNGQwOC04NGExLTI2ZDNmZmU2ZDQ2ZSIsImFjciI6IjEiLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwic2lkIjoiNDg5M2Q1YWMtOWE3Ny00ZDA4LTg0YTEtMjZkM2ZmZTZkNDZlIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiY3VzdG9tZXIzYWRtaW4xIGZuIGN1c3RvbWVyM2FkbWluMSBsbiIsInByZWZlcnJlZF91c2VybmFtZSI6ImN1c3RvbWVyM2FkbWluMSIsImdpdmVuX25hbWUiOiJjdXN0b21lcjNhZG1pbjEgZm4iLCJmYW1pbHlfbmFtZSI6ImN1c3RvbWVyM2FkbWluMSBsbiJ9.ZHQNgwkKo5w_bAVdb3nSa-H5P-ZK87M36by12aZqbPUsCmLGq_xJymlltxqpNOrMA0n9nQkQt3yclXp_0g0lN5OlFQq1oV2rwPeUOzs44mF95pVZ46kHqWEx_JZpV2Zm-Cqt-YxgBTwCXvJAHB4I_ZvUmIo4Plvw8cNOeOurxv6jO_E46PYIFQyOFiGmrceoGiahloP7ZokwpVAehCp4E73Avt7pmoYfxA1-JZ6BXZQ9rEKrnbuk1ZbQMmhyfKxkFosUpmlw4iE6mfTJ4MVtYcU2S8R9ga6ASTsZ0MFmnYrW988yFM5yzs9aBRSxFTDy6gBYcZph1FJGAgF2DbdWOg",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/users/7346f1dd-a155-40f3-8ab5-ffb854125461/groups",
-							"protocol": "https",
-							"host": [
-								"{{keycloak_gran_permissions_host}}"
-							],
-							"path": [
-								"admin",
-								"realms",
-								"group-permissions-test",
-								"users",
-								"7346f1dd-a155-40f3-8ab5-ffb854125461",
-								"groups"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "user info",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJBUWR5bjFudGRhbGxDeWlfLVdhbWVON1RrX3l6dU14d2ozcmwydkw5d0EwIn0.eyJleHAiOjE2ODU5NTAyOTAsImlhdCI6MTY4NTkzOTQ5MCwianRpIjoiNjllNTY0YzItOGZlNi00MmM5LWIwZDctMDA0NzZlMWQ5Y2EwIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9ncm91cC1wZXJtaXNzaW9ucy10ZXN0Iiwic3ViIjoiNWM4MDRiMWYtODY4MS00ZjIyLThlOWQtNTEyODk5YjA4ZGM0IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYWRtaW4tY2xpIiwic2Vzc2lvbl9zdGF0ZSI6IjI0MmViNTI1LTZkZWQtNGQzOS05OGVmLTdjNmFhYzUxMTQ5YSIsImFjciI6IjEiLCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIiwic2lkIjoiMjQyZWI1MjUtNmRlZC00ZDM5LTk4ZWYtN2M2YWFjNTExNDlhIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJjdXN0b21lcjNhZG1pbjEgZm4gY3VzdG9tZXIzYWRtaW4xIGxuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiY3VzdG9tZXIzYWRtaW4xIiwiZ2l2ZW5fbmFtZSI6ImN1c3RvbWVyM2FkbWluMSBmbiIsImZhbWlseV9uYW1lIjoiY3VzdG9tZXIzYWRtaW4xIGxuIiwiZW1haWwiOiJjdXN0b21lcjNhZG1pbjFAcmVkaGF0LmNvbSJ9.V3m6R1aCkii9yWHLI5z1SDE7e6KQI6ktuc77RuG4omsX-8Bdc1FIQdFlyOZIX2NZsJOZT659AxWeOXnPsD3iSSGfGai_p2rw6fjor1UmkUDM9T7yfSByashEciK4gIe7upRL-x5e3YXh5ro_mfI0D41nyjlN-nUpNuvRheTwdxhd5wiKfEO41We1DVEj8z18pmKERt7Skk6OoRYLnwBN5gGeGQ83VohHdsgesDo93ofpW5RGPpMbsnZAgiOqpXb5KrPR0MftWhrFyDfCYYqhQ8dsdMee6GTAEjaR7BYfr2HCj_ittw9mjeCSpv5d2KYiQ1A_F3LS947_uWrAyZlPcA",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "client_id",
-									"value": "admin-cli",
-									"type": "text"
-								},
-								{
-									"key": "grant_type",
-									"value": "password",
-									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "admin",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "admin",
-									"type": "text"
-								},
-								{
-									"key": "client_secret",
-									"value": "8DMrNQNeWksxsuY7JQMus2BJIgQWYpOC",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "grant_type",
-									"value": "client_credentials",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "scope",
-									"value": "openid",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://{{keycloak_gran_permissions_host}}/realms/group-permissions-test/protocol/openid-connect/userinfo",
-							"protocol": "https",
-							"host": [
-								"{{keycloak_gran_permissions_host}}"
-							],
-							"path": [
-								"realms",
-								"group-permissions-test",
-								"protocol",
-								"openid-connect",
-								"userinfo"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "findUsers",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJBUWR5bjFudGRhbGxDeWlfLVdhbWVON1RrX3l6dU14d2ozcmwydkw5d0EwIn0.eyJleHAiOjE2ODU5NTAyOTAsImlhdCI6MTY4NTkzOTQ5MCwianRpIjoiNjllNTY0YzItOGZlNi00MmM5LWIwZDctMDA0NzZlMWQ5Y2EwIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9ncm91cC1wZXJtaXNzaW9ucy10ZXN0Iiwic3ViIjoiNWM4MDRiMWYtODY4MS00ZjIyLThlOWQtNTEyODk5YjA4ZGM0IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYWRtaW4tY2xpIiwic2Vzc2lvbl9zdGF0ZSI6IjI0MmViNTI1LTZkZWQtNGQzOS05OGVmLTdjNmFhYzUxMTQ5YSIsImFjciI6IjEiLCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIiwic2lkIjoiMjQyZWI1MjUtNmRlZC00ZDM5LTk4ZWYtN2M2YWFjNTExNDlhIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJjdXN0b21lcjNhZG1pbjEgZm4gY3VzdG9tZXIzYWRtaW4xIGxuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiY3VzdG9tZXIzYWRtaW4xIiwiZ2l2ZW5fbmFtZSI6ImN1c3RvbWVyM2FkbWluMSBmbiIsImZhbWlseV9uYW1lIjoiY3VzdG9tZXIzYWRtaW4xIGxuIiwiZW1haWwiOiJjdXN0b21lcjNhZG1pbjFAcmVkaGF0LmNvbSJ9.V3m6R1aCkii9yWHLI5z1SDE7e6KQI6ktuc77RuG4omsX-8Bdc1FIQdFlyOZIX2NZsJOZT659AxWeOXnPsD3iSSGfGai_p2rw6fjor1UmkUDM9T7yfSByashEciK4gIe7upRL-x5e3YXh5ro_mfI0D41nyjlN-nUpNuvRheTwdxhd5wiKfEO41We1DVEj8z18pmKERt7Skk6OoRYLnwBN5gGeGQ83VohHdsgesDo93ofpW5RGPpMbsnZAgiOqpXb5KrPR0MftWhrFyDfCYYqhQ8dsdMee6GTAEjaR7BYfr2HCj_ittw9mjeCSpv5d2KYiQ1A_F3LS947_uWrAyZlPcA",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "client_id",
-									"value": "admin-cli",
-									"type": "text"
-								},
-								{
-									"key": "grant_type",
-									"value": "password",
-									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "admin",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "admin",
-									"type": "text"
-								},
-								{
-									"key": "client_secret",
-									"value": "8DMrNQNeWksxsuY7JQMus2BJIgQWYpOC",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "grant_type",
-									"value": "client_credentials",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "scope",
-									"value": "openid",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/users?search=customer3user1",
-							"protocol": "https",
-							"host": [
-								"{{keycloak_gran_permissions_host}}"
-							],
-							"path": [
-								"admin",
-								"realms",
-								"group-permissions-test",
-								"users"
-							],
-							"query": [
-								{
-									"key": "search",
-									"value": "customer3user1"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Get Token",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItZkFBZTZyYWwyUXRWQ1BFekotTExHSGRXWVpRZ3kwbWZKR0p5bzNhUDZzIn0.eyJleHAiOjE2ODU2NTU3OTUsImlhdCI6MTY4NTY0ODU5NSwianRpIjoiODRhNzgyN2MtYTE5NS00NjQzLWJiNmItMDgzOGYzOGZlY2Q0IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI2NDc5Mzc2ZS01YmMzLTRkOWQtOTc3Yy1hZTllOGM5MzhjZDkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiNWFlYzE5YmMtMzY2NS00NjEyLWI5OTYtYzk0MjU3MjI5YjlmIiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiI1YWVjMTliYy0zNjY1LTQ2MTItYjk5Ni1jOTQyNTcyMjliOWYiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.hsKcWE0dJkrk09mGRT5zRQ5i0EYnFfB3sVA4GI4f23Ujk7xZRlWDl_hjyoTimZlYr6O8vxJREOd7Tod9eTLhEgPvY3SOha8hBa1SoXCVE7pwSsTcQS92rMn2K9BWqaz4hfcUt1UAUSglnLJaBEX5rggodtlEBO8Ld7UfEHPgasgXnowFEyopVxH0pT5ruCmIhh0rGiRApQlj5X8q3oCcBwRvq0IqlX9fN15EotDDAsHc0BTxG8NfJVabdHGWwvqJCr_c_C-E54eTEyuudC2gwMkDY6UTp5db98RirRMbISQndj76ETN50r6JOWYgumLPJVYrMtgJn-7dm3nf9FMorw",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "client_id",
-							"value": "admin-cli",
-							"type": "text"
-						},
-						{
-							"key": "grant_type",
-							"value": "password",
-							"type": "text"
-						},
-						{
-							"key": "username",
-							"value": "customer3admin1",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "password",
-							"type": "text"
-						},
-						{
-							"key": "client_secret",
-							"value": "8DMrNQNeWksxsuY7JQMus2BJIgQWYpOC",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "grant_type",
-							"value": "client_credentials",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "scope",
-							"value": "openid",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/realms/group-permissions-test/protocol/openid-connect/token",
-					"protocol": "https",
-					"host": [
-						"{{keycloak_gran_permissions_host}}"
-					],
-					"path": [
-						"realms",
-						"group-permissions-test",
-						"protocol",
-						"openid-connect",
-						"token"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "user info",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.log(\"in getInfo request\", pm.collectionVariables.get(\"bearerToken\"));",
+							"",
+							"//pm.collectionVariables.get(\"bearerToken\")"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var userInfo = pm.response.json();",
+							"pm.globals.set(\"userInfo\", userInfo);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItZkFBZTZyYWwyUXRWQ1BFekotTExHSGRXWVpRZ3kwbWZKR0p5bzNhUDZzIn0.eyJleHAiOjE2ODU2MzY2MDMsImlhdCI6MTY4NTYyOTQwMywianRpIjoiMzY5NTIwYmMtYzI1NC00Zjg4LTgzZGYtYWU0YmNhM2VlNmJkIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI2NDc5Mzc2ZS01YmMzLTRkOWQtOTc3Yy1hZTllOGM5MzhjZDkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiMTk1OTI5NGItMjA4Yi00ZmUzLTk0ZDQtNjM1MDZlY2I0MGU4IiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiIxOTU5Mjk0Yi0yMDhiLTRmZTMtOTRkNC02MzUwNmVjYjQwZTgiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.QYb534OWEUEoNAdOV7fKPT9Wn7nGjF6uNtky7Kn_TgavRgL4SpyStjwxieqtbQlFmKJjluCaYChFpFgHTuNjpQ-BzY0ErNfq4W4GDxaTfXVJ9-EZp-YedZfKMTmaIQueE1tKxtWEhef-sKtsfUo6O0t0QE0OqV6Bd-KWDVb65fnYJ7bqwTZhM4ksO9DatiOMVKS3Q1RZcCqBVc4dB6_NRI5MWslKe_V9GUTzptIrU3HT90TFGam7An7dzkw7ye5SbGIWewZvo0EBhg9e5GftL1V-Spg_XVEtgJEyhMVT3JS9ier_rJeTQ6cs4YLbbVdVSoYH6qlfWGFXSe3q9FZDcg",
+							"value": "{{bearerToken}}",
 							"type": "string"
 						}
 					]
 				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "client_id",
-							"value": "admin-cli",
-							"type": "text"
-						},
-						{
-							"key": "grant_type",
-							"value": "password",
-							"type": "text"
-						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "admin",
-							"type": "text"
-						},
-						{
-							"key": "client_secret",
-							"value": "8DMrNQNeWksxsuY7JQMus2BJIgQWYpOC",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "grant_type",
-							"value": "client_credentials",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "scope",
-							"value": "openid",
-							"type": "text"
-						}
-					]
-				},
 				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/realms/master/protocol/openid-connect/userinfo",
-					"protocol": "https",
+					"raw": "{{keycloak_gran_permissions_host}}/realms/master/protocol/openid-connect/userinfo",
 					"host": [
 						"{{keycloak_gran_permissions_host}}"
 					],
@@ -541,7 +63,18 @@
 			"response": []
 		},
 		{
-			"name": "Create Group",
+			"name": "Create Parent Group",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
 					"content-type": true
@@ -553,7 +86,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItZkFBZTZyYWwyUXRWQ1BFekotTExHSGRXWVpRZ3kwbWZKR0p5bzNhUDZzIn0.eyJleHAiOjE2ODU2NDI2NDcsImlhdCI6MTY4NTYzNTQ0NywianRpIjoiMmMzMTIxNzctM2ZkOS00MmZjLWIyZTItYWYxNDNiMjMyZGZlIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI2NDc5Mzc2ZS01YmMzLTRkOWQtOTc3Yy1hZTllOGM5MzhjZDkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiMTIwMjgwZmEtZTJiMS00YjNiLWJhMmUtNmMzY2VhODMyYzRlIiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiIxMjAyODBmYS1lMmIxLTRiM2ItYmEyZS02YzNjZWE4MzJjNGUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.RafHNuqWuntvMv-8Yj4P8wKRGBeZ39IgMeYQ0F2V6yRjRx02-16PEOBhXIOaq6EwuLawLWQAFqmBPVktFImDIBOxyuVZcmdL5viyPYzy9H0WVu1QTH4iCPxvBJusxLlvQ-giPH5Tf7meyIhXJrQS6Ey0LvQrZ9pAJzDp9DFZ9oxfXqPc41RPwtKhRpAfgaphof406sJBWw_uTeAG5d9PGN_JZPkcIxQ8dWhaxZ2CdrWoyg6suGHae0Mwz929YGwb4H9-HFaW3IwtYb0Nh4dcazjrCvWg8pzizdQqG72h-hxGQEG_-W9-AKpodjBBFrvRDu-gPFKXzMw9HoXxtVXthA",
+							"value": "{{bearerToken}}",
 							"type": "string"
 						}
 					]
@@ -568,18 +101,17 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"name\":\"customer3group-rest\"}"
+					"raw": "{\n    \"name\": \"{{parentGroupName}}\",\n    \"attributes\": {\n        \"org_id\": [\"{{orgAttributeID}}\"],\n        \"org_name\": [\"{{orgAttributeName}}\"]\n    }\n}"
 				},
 				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/groups",
-					"protocol": "https",
+					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/groups",
 					"host": [
-						"{{keycloak_gran_permissions_host}}"
+						"{{keycloak_url_prefix}}"
 					],
 					"path": [
 						"admin",
 						"realms",
-						"group-permissions-test",
+						"{{realm}}",
 						"groups"
 					]
 				}
@@ -587,57 +119,24 @@
 			"response": []
 		},
 		{
-			"name": "Create Child Group",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"content-type": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItZkFBZTZyYWwyUXRWQ1BFekotTExHSGRXWVpRZ3kwbWZKR0p5bzNhUDZzIn0.eyJleHAiOjE2ODU2NDM5MDAsImlhdCI6MTY4NTYzNjcwMCwianRpIjoiZTk1NDQ4ZWQtMmU2ZC00YjhmLWI1MGEtYzBhNjRkZjc2MTQ5IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI2NDc5Mzc2ZS01YmMzLTRkOWQtOTc3Yy1hZTllOGM5MzhjZDkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiYjQ3NWIxYWItNTRlZi00Mjc1LTlhMTMtYzVlYWU4YWQyODJhIiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiJiNDc1YjFhYi01NGVmLTQyNzUtOWExMy1jNWVhZThhZDI4MmEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.OhArMM91OrQN7DlitInQl_N7M0AJmOzuSuSES_dmJCe43J06D6FROwgLIdwjeM6qNnVkctUJkkHQnplUq5_JCxSrn72sOTsLbmBIxnQ_eLAcmxHBi_hnNxZ9y7SBEhReZ3ADNTlldji0pjodXmJo8boGglbG4uF4rorjtqOU3j-CVPklaRZdFolkpsJJnPs8Sqqfj7DiuhRDbeoIqdkuMuxNWn84D0pKJObFPO9GBKsTzXlbWIJUhAQiA_73hWe_sNf7sAqgKaQQ5HoDmeHAC_H-yN9jLnjZucx3Fiat2g9OaattKyTrOq0Nld0uSgudB9B5AgL8roaCJU_KoB1Tpw",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+			"name": "Get Parent Group Info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var parentGroupInfo = pm.response.json();",
+							"",
+							"console.log(\"parent group info\",parentGroupInfo[0]);",
+							"pm.globals.set(\"parentGroupInfo\", parentGroupInfo[0]);",
+							"pm.globals.set(\"parentGroupInfoID\", parentGroupInfo[0].id);",
+							""
+						],
+						"type": "text/javascript"
 					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"name\":\"users\"}"
-				},
-				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/groups/a509e729-b855-49c9-b164-47a48a082a92/children",
-					"protocol": "https",
-					"host": [
-						"{{keycloak_gran_permissions_host}}"
-					],
-					"path": [
-						"admin",
-						"realms",
-						"group-permissions-test",
-						"groups",
-						"a509e729-b855-49c9-b164-47a48a082a92",
-						"children"
-					]
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create Group Copy",
+			],
 			"protocolProfileBehavior": {
-				"disableBodyPruning": true,
 				"disabledSystemHeaders": {
 					"content-type": true
 				}
@@ -648,7 +147,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItZkFBZTZyYWwyUXRWQ1BFekotTExHSGRXWVpRZ3kwbWZKR0p5bzNhUDZzIn0.eyJleHAiOjE2ODU2OTEzNDcsImlhdCI6MTY4NTY4NDE0NywianRpIjoiMDY4M2YyYmMtZTdiNi00NzVmLThiZTQtYTE4M2QyMzRiM2M2IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI2NDc5Mzc2ZS01YmMzLTRkOWQtOTc3Yy1hZTllOGM5MzhjZDkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiMDBkZDA0ZWEtNDk1Ny00ODgxLWJiNjMtNzkxYTQyOTA4YzdkIiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiIwMGRkMDRlYS00OTU3LTQ4ODEtYmI2My03OTFhNDI5MDhjN2QiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.HDNxeTtV2btwE-froMxa3OkhFgw0QE76IgvaOkBqEgDyMlxdFo1gUVccIHovc_re_HkOHT07Rj_eRRSlol_3yR4MZBHWC8-amoSuzY22FRUE9dqZZIFe-C0ngzW8gDLGuK4TzA_0XUxZ7K8OqCRLVogExw351NqwDkmD8aUPPCJmuAOrJJzc0u3IaVwajzf_7knfd0vS5DEDekQBFKAJrwuPcSJK2E472LizKBU7nJ4d8LVu20c3mmmfLyb56fDMh0hVm_HyOElbddv6jcriUdoYgH2ORE0IcmNyIev2qOFNB95WQfLXdaPCBaWnLTWWnWDoxpP6BOy_xIQb6VVP4A",
+							"value": "{{bearerToken}}",
 							"type": "string"
 						}
 					]
@@ -661,22 +160,147 @@
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"name\":\"customer3group-rest\"}"
-				},
 				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/roles/customer3-group-admin-role",
-					"protocol": "https",
+					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/groups?search={{parentGroupName}}",
 					"host": [
-						"{{keycloak_gran_permissions_host}}"
+						"{{keycloak_url_prefix}}"
 					],
 					"path": [
 						"admin",
 						"realms",
-						"group-permissions-test",
-						"roles",
-						"customer3-group-admin-role"
+						"{{realm}}",
+						"groups"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "{{parentGroupName}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Child Group - admins",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var adminsChildGroupInfo = pm.response.json();",
+							"pm.globals.set(\"adminsChildGroupPath\", adminsChildGroupInfo.path);",
+							"pm.globals.set(\"adminsChildGroupID\", adminsChildGroupInfo.id);",
+							"pm.globals.set(\"adminsChildGroup\", adminsChildGroupInfo);",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"admins\",\n    \"attributes\": {\n        \"org_admin\": [\"true\"]\n    }\n}"
+				},
+				"url": {
+					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/groups/{{parentGroupInfoID}}/children",
+					"host": [
+						"{{keycloak_url_prefix}}"
+					],
+					"path": [
+						"admin",
+						"realms",
+						"{{realm}}",
+						"groups",
+						"{{parentGroupInfoID}}",
+						"children"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Child Group - users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var usersChildGroupInfo = pm.response.json();",
+							"pm.globals.set(\"usersChildGroupPath\", usersChildGroupInfo.path);",
+							"",
+							"pm.globals.set(\"usersChildGroupID\", usersChildGroupInfo.id);",
+							"pm.globals.set(\"usersChildGroup\", usersChildGroupInfo);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"users\",\n    \"attributes\": {\n        \"org_admin\": [\"true\"]\n    }\n}"
+				},
+				"url": {
+					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/groups/{{parentGroupInfoID}}/children",
+					"host": [
+						"{{keycloak_url_prefix}}"
+					],
+					"path": [
+						"admin",
+						"realms",
+						"{{realm}}",
+						"groups",
+						"{{parentGroupInfoID}}",
+						"children"
 					]
 				}
 			},
@@ -695,7 +319,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItZkFBZTZyYWwyUXRWQ1BFekotTExHSGRXWVpRZ3kwbWZKR0p5bzNhUDZzIn0.eyJleHAiOjE2ODU2NDQ2NzYsImlhdCI6MTY4NTYzNzQ3NiwianRpIjoiODRmMmY4ZGYtNmFhNS00MGYwLWFkZWItMThmNjU0OTRmOTQ1IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI2NDc5Mzc2ZS01YmMzLTRkOWQtOTc3Yy1hZTllOGM5MzhjZDkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiYmE0ODMyZTAtNmUwNy00ZTg2LThlZmUtZTZiNjU4Njc4ZDZkIiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiJiYTQ4MzJlMC02ZTA3LTRlODYtOGVmZS1lNmI2NTg2NzhkNmQiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.UmzJDPd0Ic6VTM6tzeIJsI9Gakr2AEzJ4jC25Z8rIvsNGeq7cr5EjktmsU8mJlH4WYznCELg3sItUZDqrjfgU54jH0C5Ks47SbhaJ3cUU0u52sLVrAb-G03trrL3yNdIkg10s_Asvdiy3YESH4iOO0Eevu0TE9axEKtZHVT953JXFjuPwBKjgFCaev-Kl1bU1NgJbnzux8WeAOyg40jSpJJlQt9sZARzpLoZRZJ1nYLgh40wIJ9bjI23SgdpPSLWyLgFKz-a0xwSMMz0JTkLvTd1tHZtOnFsVMqZPBRRuchAN6039hp66gr-mfqekonICydDjiHJ7L3blwnTJNAbDA",
+							"value": "{{bearerToken}}",
 							"type": "string"
 						}
 					]
@@ -710,114 +334,18 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n        \"username\": \"customer3user1\",\n        \"enabled\": true,\n        \"totp\": false,\n        \"emailVerified\": false,\n        \"firstName\": \"customer3user1 fn\",\n        \"lastName\": \"customer3user1 ln\",\n        \"groups\":[\"/customer3group-rest/users\"]\n}"
+					"raw": "{\n        \"username\": \"{{parentGroupName}}admin1\",\n        \"enabled\": true,\n        \"totp\": false,\n        \"emailVerified\": false,\n        \"firstName\": \"{{parentGroupName}}admin1 fn\",\n        \"lastName\": \"{{parentGroupName}}admin1 ln\",\n        \"groups\":[\"{{adminsChildGroupPath}}\"]\n}"
 				},
 				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/users",
-					"protocol": "https",
+					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/users",
 					"host": [
-						"{{keycloak_gran_permissions_host}}"
+						"{{keycloak_url_prefix}}"
 					],
 					"path": [
 						"admin",
 						"realms",
-						"group-permissions-test",
+						"{{realm}}",
 						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Adding user to the role",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"content-type": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJybXZnUFk5WEEyZkNmZUJOVXZXbUpzZG52OXFxOERjU3RhUjF5cXhtNDdjIn0.eyJleHAiOjE2ODU2OTE5NDgsImlhdCI6MTY4NTY4NDc0OCwianRpIjoiNTA2YzAxYTctZTFhYi00YjU5LTk1N2QtZjcwMzliYjY3MzRmIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9ncm91cC1wZXJtaXNzaW9ucy10ZXN0Iiwic3ViIjoiM2M5NGE1ZGYtMDMyMC00MzAxLWEzMjctZDYwZjdiZjliYmQ3IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYWRtaW4tY2xpIiwic2Vzc2lvbl9zdGF0ZSI6ImZmNTI1N2FhLWFkNzEtNGI2Ny1hOTU0LWRmNTBlODQyMzk1NyIsImFjciI6IjEiLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwic2lkIjoiZmY1MjU3YWEtYWQ3MS00YjY3LWE5NTQtZGY1MGU4NDIzOTU3IiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiY3VzdG9tZXIzYWRtaW4xIGZuIGN1c3RvbWVyM2FkbWluMSBsbiIsInByZWZlcnJlZF91c2VybmFtZSI6ImN1c3RvbWVyM2FkbWluMSIsImdpdmVuX25hbWUiOiJjdXN0b21lcjNhZG1pbjEgZm4iLCJmYW1pbHlfbmFtZSI6ImN1c3RvbWVyM2FkbWluMSBsbiJ9.aCG8vmZZ_DMJ6s7Fntb6d6dhqvJ8ihR9zdXa1SXvzqxaXJqUDqfqPxVWXqPFn7liMD3DmMaE3Zg99qL_jwDBTZrj1kysM2QDSlXpVzXhXVKMYfA6bA7Zku4D5hMKOD7NVrDHOdEY9_do_kJuaCmmWQUrqAPaZNzmhin1k7XLa7DNyY3GrMdgK5CmDgo-kJ7zNnJbtIxm0RmUnW8lysjT7Kglu4LBSVNEdHKMF4-H6X0lPn0pyZ-Bj9x4Rss_fuOcIyPjWnDo7BHGX7nTx11aLwSmMbMLtDIQ2KqoZLOjOQ1e-D9893CzcUIDz9mcPHsso4JfZlCSClEDyB_RYokPXg",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n        \"username\": \"customer3user5\",\n        \"enabled\": true,\n        \"totp\": false,\n        \"emailVerified\": false,\n        \"firstName\": \"customer3user5 fn\",\n        \"lastName\": \"customer3user5 ln\",\n        \"groups\":[\"customer3group-rest/users\"]\n}"
-				},
-				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/users",
-					"protocol": "https",
-					"host": [
-						"{{keycloak_gran_permissions_host}}"
-					],
-					"path": [
-						"admin",
-						"realms",
-						"group-permissions-test",
-						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Enable granular permissions",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"content-type": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItZkFBZTZyYWwyUXRWQ1BFekotTExHSGRXWVpRZ3kwbWZKR0p5bzNhUDZzIn0.eyJleHAiOjE2ODU2NDg0NzcsImlhdCI6MTY4NTY0MTI3NywianRpIjoiMTI4NWUyY2MtZGNhNS00YjMxLWFkNjItM2QzYzQ2YjdmMDYyIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI2NDc5Mzc2ZS01YmMzLTRkOWQtOTc3Yy1hZTllOGM5MzhjZDkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiZDEyNzI4OWYtMzkzYy00MmVhLTk1MTctNDRmNGE1ZGU1MjA0IiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiJkMTI3Mjg5Zi0zOTNjLTQyZWEtOTUxNy00NGY0YTVkZTUyMDQiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.knn7I9uFQpmw0_81q_8PumHfZxmV_NsCIgi-DbkhpW5jaBTF1cccd7JJ24oLu0efqWvyH0WE0baPzxtrVyOP7BskhQ_3mIFGQXyDW8AwIDwDojPuuXZW5XrgfRSwE8OoeSwoihmfSlIDBJ0r9Jce_UCt15MtBwrSSeb3tskn1lMRfae-pFY2phlVqfGdrnDuE3OQbE6tg6QIME9Z4t5aE9_SZekWkOSft9UvgLXiLtXJ7TmUtSXaV0kJJ9RIGpOepN_T_jBi67WgYxpD1sp_wbSs-glDAtNI5PwTgTQouoI8bl3ZAG92mNSjgcE_8yt1pAb3EfVl0HQScxtMpEXODQ",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"enabled\": \"true\"}"
-				},
-				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/groups/8ec88443-35dd-4bb8-ba18-fbca1559f726/management/permissions",
-					"protocol": "https",
-					"host": [
-						"{{keycloak_gran_permissions_host}}"
-					],
-					"path": [
-						"admin",
-						"realms",
-						"group-permissions-test",
-						"groups",
-						"8ec88443-35dd-4bb8-ba18-fbca1559f726",
-						"management",
-						"permissions"
 					]
 				}
 			},
@@ -836,7 +364,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItZkFBZTZyYWwyUXRWQ1BFekotTExHSGRXWVpRZ3kwbWZKR0p5bzNhUDZzIn0.eyJleHAiOjE2ODU2NDY2NjIsImlhdCI6MTY4NTYzOTQ2MiwianRpIjoiNGQ5ZWM5YzEtODc0OC00ZTZlLWE5ODgtNTkwZTMzN2EzNjkyIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI2NDc5Mzc2ZS01YmMzLTRkOWQtOTc3Yy1hZTllOGM5MzhjZDkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiMjVjOGFjOWYtYzlhYS00ZjZmLTlkNjAtMmMxNmZhZjRiZDUyIiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiIyNWM4YWM5Zi1jOWFhLTRmNmYtOWQ2MC0yYzE2ZmFmNGJkNTIiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.omxsq4vThgI16w0rSn_S2UiH6-207EQg0A3oSS2H67FMdH66qtDqXXllnDbI4seXYS2H8h_A5gIMLsNfSsHbXwUB0vXg3L57hF5AgDH7BSKVMxktvgUyoakoaEmrPjVMqEQYcPnDDpLi_sGOqVTR2lQZAAqck3r1OSHGpjKsxOArOv5qdf9yOrflKwQMc7x8WBD60aog-KXufbYocIYjgL8GENhiXoWSXqqc64VfKGAx74Yx-2Gfnk5dhk846iIZ5Mvv2cBC13F8PW7AsSJz12qQkRAGBHGQNU9IQ42U0St9WeAp5lUEKIvXlcHo2gbaG3s6O2HdXFLcUi0ZaLJnjA",
+							"value": "{{bearerToken}}",
 							"type": "string"
 						}
 					]
@@ -851,18 +379,17 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"name\":\"customer3-group-admin-role\",\"description\":\"Whoever owns this role will be the admins to customer3group.\"}"
+					"raw": "{\"name\":\"{{parentGroupName}}-group-admin-role\",\"description\":\"Whoever owns this role will be the admins to the group - {{parentGroupName}}.\"}"
 				},
 				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/roles",
-					"protocol": "https",
+					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/roles",
 					"host": [
-						"{{keycloak_gran_permissions_host}}"
+						"{{keycloak_url_prefix}}"
 					],
 					"path": [
 						"admin",
 						"realms",
-						"group-permissions-test",
+						"{{realm}}",
 						"roles"
 					]
 				}
@@ -870,58 +397,20 @@
 			"response": []
 		},
 		{
-			"name": "Create a policy based on the roles",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"content-type": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItZkFBZTZyYWwyUXRWQ1BFekotTExHSGRXWVpRZ3kwbWZKR0p5bzNhUDZzIn0.eyJleHAiOjE2ODU2NDc5NzgsImlhdCI6MTY4NTY0MDc3OCwianRpIjoiYWViZjcxNDAtYjE5YS00YzhmLWIyZGMtOGI4YTVmMmViOTcxIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI2NDc5Mzc2ZS01YmMzLTRkOWQtOTc3Yy1hZTllOGM5MzhjZDkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiZTJjZjI3NTQtNzI0Yi00YTQ5LWIzOTctZDU0ZmI1ZjZjMTI5IiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiJlMmNmMjc1NC03MjRiLTRhNDktYjM5Ny1kNTRmYjVmNmMxMjkiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.N4lVTwD3IsYRwG3B1PbeMgwusFx8hT04bbOXTRoUXN9HBQNnOKVDoyref_8N24a8Kt1nNBwoNOOO3Tv6j86aOf_oy70R0GDy8lAUjCXJA5cdKFPdQTTBF_Z3YjYoHlbAAIJi2DxkHcaRcMBN6vMDmQ65YdOVN9pYTUP0rqBQ7fafgBI7jJKTw7FlczwRng40TpalA17HCLQs8slgtzI6fNrXy2pEwVz3cq1o6R3zPIYKwvkJ-Atwdi9HId75Jx6Xldhmfu8I-Xt0cHXwUJYLSe7T53FKJ_EBf6YLmuJPx6txbzvilmkLcjbL068mqeraWzIMhaiuu4t8qk8EKqFLtg",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+			"name": "Enable granular permissions - Parent Group",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var parentGranPermissionsInfo = pm.response.json();",
+							"pm.globals.set(\"parentGranPermissionsInfo\", parentGranPermissionsInfo);",
+							""
+						],
+						"type": "text/javascript"
 					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"roles\":[{\"id\":\"6cc37f29-fc2f-4df7-9e60-7e70641569e6\",\"required\":true}],\"logic\":\"POSITIVE\",\"name\":\"customer3-group-admin-role-policy\",\"description\":\"This role based policy will link the users to the admins of customer3group\"}"
-				},
-				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/clients/2a7f6650-047b-4c03-92bf-15c6b84f826f/authz/resource-server/policy/role",
-					"protocol": "https",
-					"host": [
-						"{{keycloak_gran_permissions_host}}"
-					],
-					"path": [
-						"admin",
-						"realms",
-						"group-permissions-test",
-						"clients",
-						"2a7f6650-047b-4c03-92bf-15c6b84f826f",
-						"authz",
-						"resource-server",
-						"policy",
-						"role"
-					]
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get All the policies needs to be updated.",
+			],
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
 					"content-type": true
@@ -933,137 +422,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJVeFh4Wl95MjRiQXNUanI3eW5TTmNKN1o2QjFKZkkxVlpmRlBweDRvNFZnIn0.eyJleHAiOjE2ODUxNTcyMzAsImlhdCI6MTY4NTEyMTIzMCwianRpIjoiM2Q2N2FmYTItZDMzMy00NGYxLThmN2UtNjM1NzZkMGMwN2M0IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI0ZWE0YzgzZC1hYzBlLTQ4YzMtOGFlMy05YzJlMmIyMTI0NzciLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiNTI3NDA1Y2EtYTkwMi00MzI4LWExMzAtZTkyODVmMmFhNDg3IiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiI1Mjc0MDVjYS1hOTAyLTQzMjgtYTEzMC1lOTI4NWYyYWE0ODciLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.s_dQH8htL3u2rrvUzluPF05_WM4K_CRWufdizT0KdpcWGzsXNThj7xjHRomf99ORfPGwoQPEr33uvxhMtTtdEnuVB2KMzQiUmVF5A4GyWhpc6WP5YZ0Fv0l_9O6enJ6XZ7HYvQRbYLT1yMNP0k2jyxU9LoAy0SlBqvnaY0ed7kAOUVA1HwuE7o_Bds3v0TJYTKW-Jx_eS7PJ1m2S56OB-xEkXYdu5G7vvDZVAoctycWLeY2birXvohbLmilBK-j2uOrwKXTcM-FdgPF4lPHzK-bbK1IwJ1baOazAbIh729bS4YrP2oTIARQeaY9_g_DkDiDbdQuHaABYAu5itjid4g",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8080/admin/realms/group-permissions-test/clients/e0f9b4bc-da2d-4376-b35c-053fb4413426/authz/resource-server/permission?first=0&max=11&name=f1d30bf5-e630-4bc6-b2d5-07b5723b502&type=scope",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"admin",
-						"realms",
-						"group-permissions-test",
-						"clients",
-						"e0f9b4bc-da2d-4376-b35c-053fb4413426",
-						"authz",
-						"resource-server",
-						"permission"
-					],
-					"query": [
-						{
-							"key": "first",
-							"value": "0"
-						},
-						{
-							"key": "max",
-							"value": "11"
-						},
-						{
-							"key": "name",
-							"value": "f1d30bf5-e630-4bc6-b2d5-07b5723b502"
-						},
-						{
-							"key": "type",
-							"value": "scope"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get All the policies needs to be updated. Copy",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"content-type": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJVeFh4Wl95MjRiQXNUanI3eW5TTmNKN1o2QjFKZkkxVlpmRlBweDRvNFZnIn0.eyJleHAiOjE2ODUxNTcyMzAsImlhdCI6MTY4NTEyMTIzMCwianRpIjoiM2Q2N2FmYTItZDMzMy00NGYxLThmN2UtNjM1NzZkMGMwN2M0IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI0ZWE0YzgzZC1hYzBlLTQ4YzMtOGFlMy05YzJlMmIyMTI0NzciLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiNTI3NDA1Y2EtYTkwMi00MzI4LWExMzAtZTkyODVmMmFhNDg3IiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiI1Mjc0MDVjYS1hOTAyLTQzMjgtYTEzMC1lOTI4NWYyYWE0ODciLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.s_dQH8htL3u2rrvUzluPF05_WM4K_CRWufdizT0KdpcWGzsXNThj7xjHRomf99ORfPGwoQPEr33uvxhMtTtdEnuVB2KMzQiUmVF5A4GyWhpc6WP5YZ0Fv0l_9O6enJ6XZ7HYvQRbYLT1yMNP0k2jyxU9LoAy0SlBqvnaY0ed7kAOUVA1HwuE7o_Bds3v0TJYTKW-Jx_eS7PJ1m2S56OB-xEkXYdu5G7vvDZVAoctycWLeY2birXvohbLmilBK-j2uOrwKXTcM-FdgPF4lPHzK-bbK1IwJ1baOazAbIh729bS4YrP2oTIARQeaY9_g_DkDiDbdQuHaABYAu5itjid4g",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8080/admin/realms/group-permissions-test/clients/e0f9b4bc-da2d-4376-b35c-053fb4413426/authz/resource-server/permission?first=0&max=11&name=f1d30bf5-e630-4bc6-b2d5-07b5723b502&type=scope",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"admin",
-						"realms",
-						"group-permissions-test",
-						"clients",
-						"e0f9b4bc-da2d-4376-b35c-053fb4413426",
-						"authz",
-						"resource-server",
-						"permission"
-					],
-					"query": [
-						{
-							"key": "first",
-							"value": "0"
-						},
-						{
-							"key": "max",
-							"value": "11"
-						},
-						{
-							"key": "name",
-							"value": "f1d30bf5-e630-4bc6-b2d5-07b5723b502"
-						},
-						{
-							"key": "type",
-							"value": "scope"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update granular permission policy - manage.members.permission.group.{group-id}",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"content-type": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItZkFBZTZyYWwyUXRWQ1BFekotTExHSGRXWVpRZ3kwbWZKR0p5bzNhUDZzIn0.eyJleHAiOjE2ODU2ODk0NTQsImlhdCI6MTY4NTY4MjI1NCwianRpIjoiMTQyMDM2ZjMtODg2MC00ZGJhLWFjZGMtOTZjNzY0MjAxNjgxIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI2NDc5Mzc2ZS01YmMzLTRkOWQtOTc3Yy1hZTllOGM5MzhjZDkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiZWVhNTZjOTktMmRiMC00MDYxLWJjYzItNWFjMTk2NTA5OWEyIiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiJlZWE1NmM5OS0yZGIwLTQwNjEtYmNjMi01YWMxOTY1MDk5YTIiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.Me-WBDQTlA7K5CBVm0QjvdJtqXnvMPymi9kRbymLOStd3zexT6bnWEBu_q3r6fQZra7MVPnWT8h2pyPFI8sCudKSvzFGAO4OOPGY529sdPgz2cC5k2UN7i7yGJUoTqQNU4fJGEfK3EpgJFXiE0JFglpUI7srk3azzoxOhx0Iz1JCXINKgfOotYnZdq_5WeUz1oQtZA1mUt26Da_qIg1V9yDK1sTOoeKDe6lOBLqiCW6PdE5mLNETF_vZ_hjl-i1xM4K-8SU7Ig1N51wOcc_gj-8YB_vKGiFL162hyGGzcuMvO35h6UlX_0aARtF5wvXy8msM7EnW2s-WJ9pcFh6RtA",
+							"value": "{{bearerToken}}",
 							"type": "string"
 						}
 					]
@@ -1078,129 +437,41 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"16170990-b7af-4aa4-9a5c-57eb7289cd9e\",\n    \"name\": \"manage.permission.group.a509e729-b855-49c9-b164-47a48a082a92\",\n    \"type\": \"scope\",\n    \"logic\": \"POSITIVE\",\n    \"decisionStrategy\": \"UNANIMOUS\",    \n    \"policies\": [\n        \"b85eb85e-be16-4cf3-ad69-a0a72cac3e41\"\n    ],\n   \"resources\":[\"0c5e92dd-0f50-41f7-8f3c-53640389330b\"],\n   \"scopes\":[\"1efcb6e6-17d2-4d20-9093-e0d8780304d7\"],\n   \"description\": \"\"\n}"
+					"raw": "{\"enabled\": \"true\"}"
 				},
 				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/clients/2a7f6650-047b-4c03-92bf-15c6b84f826f/authz/resource-server/permission/scope/16170990-b7af-4aa4-9a5c-57eb7289cd9e",
-					"protocol": "https",
+					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/groups/{{parentGroupInfoID}}/management/permissions",
 					"host": [
-						"{{keycloak_gran_permissions_host}}"
+						"{{keycloak_url_prefix}}"
 					],
 					"path": [
 						"admin",
 						"realms",
-						"group-permissions-test",
-						"clients",
-						"2a7f6650-047b-4c03-92bf-15c6b84f826f",
-						"authz",
-						"resource-server",
-						"permission",
-						"scope",
-						"16170990-b7af-4aa4-9a5c-57eb7289cd9e"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Group Policies",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"content-type": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItZkFBZTZyYWwyUXRWQ1BFekotTExHSGRXWVpRZ3kwbWZKR0p5bzNhUDZzIn0.eyJleHAiOjE2ODU2NTMzNzYsImlhdCI6MTY4NTY0NjE3NiwianRpIjoiNTUxMzY0MTItOGUyMy00YzBkLTljZWMtMjhkMzc0NmZiNmI2IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI2NDc5Mzc2ZS01YmMzLTRkOWQtOTc3Yy1hZTllOGM5MzhjZDkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiZWQ4Njg0Y2EtZjNkNi00YTg3LTllODktNmJlODAxYzA5NTFhIiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiJlZDg2ODRjYS1mM2Q2LTRhODctOWU4OS02YmU4MDFjMDk1MWEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.siLPTZILBRNf9g89MTAwSMVF9e4zVvsmAPLZIxsoHHF53fUvv_W4-4tUCR5RzLJL3fd0RuRMc29rk1UTXi_CheZR0bkA97O-E0GOOtNCqY_Ts1vlW7im7mg5hDj42paXtuapx4kWWdxjA3esSe_62rMCEUiPH33aK3UodpEg6zu91P7nDadzo_9-djEhgoePvfnwL-WOOlDsS0JHA1QveqPLyvyI8d9t_zilEbonvAM5h18Jy4iOOzMill_O6Ga3Fz5LSJDdA-7DYxcedYu-7Y62F1KfuEaFjDx6B0TZccbsdti2K270WO6Y-q9k2XiVgBOgMfxWn1FEpt8Y5SFE1w",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/clients/2a7f6650-047b-4c03-92bf-15c6b84f826f/authz/resource-server/permission/scope/16170990-b7af-4aa4-9a5c-57eb7289cd9e",
-					"protocol": "https",
-					"host": [
-						"{{keycloak_gran_permissions_host}}"
-					],
-					"path": [
-						"admin",
-						"realms",
-						"group-permissions-test",
-						"clients",
-						"2a7f6650-047b-4c03-92bf-15c6b84f826f",
-						"authz",
-						"resource-server",
-						"permission",
-						"scope",
-						"16170990-b7af-4aa4-9a5c-57eb7289cd9e"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Add role to the Group",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"content-type": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJoazhaWkRNS2c5NUF5N0JNbHhUbU1EZWJSYUZUR19jUmtQdnV6VEZoTnpRIn0.eyJleHAiOjE2ODU3NDM3NDgsImlhdCI6MTY4NTczMjk0OCwianRpIjoiOTljZGQ2NGQtYzU3Zi00M2MyLWE3NzUtMTM4ZjFkYjI0MTlhIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiIyODRhM2JjYS1kMzhmLTRkOTUtYWIxZC02ZDQ0YTM2MWZlYWEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiNTQ4YjVjNjctNDljYi00ZTQ2LWJjMTgtMWE5NTViYjQ3N2M0IiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIGVtYWlsIHByb2ZpbGUiLCJzaWQiOiI1NDhiNWM2Ny00OWNiLTRlNDYtYmMxOC0xYTk1NWJiNDc3YzQiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.KHX4iy9l2sbXAdUYgt32qgmmp0eq3w1SfOwhBj1TA39S7x9rc_bE3p5KrsZtzY26LSmMLkP_4TYqRjA5qVd-Rj_XHn5nwRIeRZb23zHuYco4Ow3h-6wOunHVDm_f895Lp_s4nB80zGqAnB4Zbmq1OoBUZz_wGKNZ0yo9-J58UUepyxRIy6T3CpRx14_5xnyq8Q7OWEmbTOCeAJ8pHnlG7nDwVLIGAWIJ9kCn8TfJmKe0NyLx7Hte4WyhGYEjtmDMg9EF8Z0pk0YqDoxERQAF1k9-5ZjVnyqXGk7H5SRT11Q3ntN1SQtuhIvwoChXE0oBWgtfZFAIRmKsmkmrdXZS0g",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"id\": \"92358773-e618-49a4-94c7-6bbfe6c89ff5\",\n    \"name\": \"query-users\",\n    \"description\": \"${role_query-users}\"\n}"
-				},
-				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/groups/24695d7a-8580-4f03-91a4-490d8bb8d084/role-mappings/realm",
-					"protocol": "https",
-					"host": [
-						"{{keycloak_gran_permissions_host}}"
-					],
-					"path": [
-						"admin",
-						"realms",
-						"group-permissions-test",
+						"{{realm}}",
 						"groups",
-						"24695d7a-8580-4f03-91a4-490d8bb8d084",
-						"role-mappings",
-						"realm"
+						"{{parentGroupInfoID}}",
+						"management",
+						"permissions"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Get Groups",
+			"name": "Enable granular permissions - Child Group - Admins",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var adminGranPermissionsInfo = pm.response.json();",
+							"pm.globals.set(\"adminGranPermissionsInfo\", adminGranPermissionsInfo);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
 					"content-type": true
@@ -1212,7 +483,128 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItZkFBZTZyYWwyUXRWQ1BFekotTExHSGRXWVpRZ3kwbWZKR0p5bzNhUDZzIn0.eyJleHAiOjE2ODU2NDI2NDcsImlhdCI6MTY4NTYzNTQ0NywianRpIjoiMmMzMTIxNzctM2ZkOS00MmZjLWIyZTItYWYxNDNiMjMyZGZlIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI2NDc5Mzc2ZS01YmMzLTRkOWQtOTc3Yy1hZTllOGM5MzhjZDkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiMTIwMjgwZmEtZTJiMS00YjNiLWJhMmUtNmMzY2VhODMyYzRlIiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiIxMjAyODBmYS1lMmIxLTRiM2ItYmEyZS02YzNjZWE4MzJjNGUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.RafHNuqWuntvMv-8Yj4P8wKRGBeZ39IgMeYQ0F2V6yRjRx02-16PEOBhXIOaq6EwuLawLWQAFqmBPVktFImDIBOxyuVZcmdL5viyPYzy9H0WVu1QTH4iCPxvBJusxLlvQ-giPH5Tf7meyIhXJrQS6Ey0LvQrZ9pAJzDp9DFZ9oxfXqPc41RPwtKhRpAfgaphof406sJBWw_uTeAG5d9PGN_JZPkcIxQ8dWhaxZ2CdrWoyg6suGHae0Mwz929YGwb4H9-HFaW3IwtYb0Nh4dcazjrCvWg8pzizdQqG72h-hxGQEG_-W9-AKpodjBBFrvRDu-gPFKXzMw9HoXxtVXthA",
+							"value": "{{bearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"enabled\": \"true\"}"
+				},
+				"url": {
+					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/groups/{{adminsChildGroupID}}/management/permissions",
+					"host": [
+						"{{keycloak_url_prefix}}"
+					],
+					"path": [
+						"admin",
+						"realms",
+						"{{realm}}",
+						"groups",
+						"{{adminsChildGroupID}}",
+						"management",
+						"permissions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enable granular permissions - Child Group - Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var usersGranPermissionsInfo = pm.response.json();",
+							"pm.globals.set(\"usersGranPermissionsInfo\", usersGranPermissionsInfo);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"enabled\": \"true\"}"
+				},
+				"url": {
+					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/groups/{{usersChildGroupID}}/management/permissions",
+					"host": [
+						"{{keycloak_url_prefix}}"
+					],
+					"path": [
+						"admin",
+						"realms",
+						"{{realm}}",
+						"groups",
+						"{{usersChildGroupID}}",
+						"management",
+						"permissions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Client Info - realm-management",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var realmMgmtClientInfo = pm.response.json();",
+							"pm.globals.set(\"realmMgmtClientID\", realmMgmtClientInfo[0].id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearerToken}}",
 							"type": "string"
 						}
 					]
@@ -1226,163 +618,14 @@
 					}
 				],
 				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/clients/2a7f6650-047b-4c03-92bf-15c6b84f826f/authz/resource-server/policy/16170990-b7af-4aa4-9a5c-57eb7289cd9e/scopes",
-					"protocol": "https",
+					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/clients?clientId=realm-management",
 					"host": [
-						"{{keycloak_gran_permissions_host}}"
+						"{{keycloak_url_prefix}}"
 					],
 					"path": [
 						"admin",
 						"realms",
-						"group-permissions-test",
-						"clients",
-						"2a7f6650-047b-4c03-92bf-15c6b84f826f",
-						"authz",
-						"resource-server",
-						"policy",
-						"16170990-b7af-4aa4-9a5c-57eb7289cd9e",
-						"scopes"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Permissions Scope",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"content-type": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItZkFBZTZyYWwyUXRWQ1BFekotTExHSGRXWVpRZ3kwbWZKR0p5bzNhUDZzIn0.eyJleHAiOjE2ODU2ODkxODAsImlhdCI6MTY4NTY4MTk4MCwianRpIjoiOTNiMjg4ZmItYTUzMC00NWIyLWJmM2MtZDIwMGY5NGFmZDU0IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI2NDc5Mzc2ZS01YmMzLTRkOWQtOTc3Yy1hZTllOGM5MzhjZDkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiY2YzOWJhYzktMjhiYS00NmMxLTgxZmQtYzk4OWFkMDM5ZTg0IiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiJjZjM5YmFjOS0yOGJhLTQ2YzEtODFmZC1jOTg5YWQwMzllODQiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.FIjpYYopbEXOTP1HCxS-F2Pp5Ghj7F1t17sMUH053B9n1wEtUlD_DI0ua3gauIj-IatTpakPgxXo8YtDF3lm7EPlxqYC-KHxYL8110AEN9qu5d1UNztiLOVZpEJR0-cRk5lu1q8Ha9zvk1gT9Z6tVjt0JiTKCL54rgAqAoRDeodBzMf0teq_a8sinvdWiJc2W3NPdnB36JLpFFoUWelWkyYLIODOE9fz1z9aT50Mx2_o1NWSeN-oC9mxpZSBbOPgMd6tdfVofWBlGKoVkG3imcxjW_HL7YdbiJZJ6_kxsBnSNRAJBTdfrQondf_NDOvijD0dQJqiVcSavvgvVsU-5g",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/clients/2a7f6650-047b-4c03-92bf-15c6b84f826f/authz/resource-server/policy/16170990-b7af-4aa4-9a5c-57eb7289cd9e/scopes",
-					"protocol": "https",
-					"host": [
-						"{{keycloak_gran_permissions_host}}"
-					],
-					"path": [
-						"admin",
-						"realms",
-						"group-permissions-test",
-						"clients",
-						"2a7f6650-047b-4c03-92bf-15c6b84f826f",
-						"authz",
-						"resource-server",
-						"policy",
-						"16170990-b7af-4aa4-9a5c-57eb7289cd9e",
-						"scopes"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Policy by Name",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"content-type": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItZkFBZTZyYWwyUXRWQ1BFekotTExHSGRXWVpRZ3kwbWZKR0p5bzNhUDZzIn0.eyJleHAiOjE2ODU2NTI5NjcsImlhdCI6MTY4NTY0NTc2NywianRpIjoiOTVkZGQ5YzYtZTNlOS00ZmY3LTg5ZDgtMDA3ZThjZTE0N2Q0IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI2NDc5Mzc2ZS01YmMzLTRkOWQtOTc3Yy1hZTllOGM5MzhjZDkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiZjVhODYzOWQtNzdjMC00NTYwLTk4NWUtNzAwN2Y1YjZmZmI3IiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiJmNWE4NjM5ZC03N2MwLTQ1NjAtOTg1ZS03MDA3ZjViNmZmYjciLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.MMpxA4oJw6HlZFDEDcBl91nJfQhh_bsW7E5pV43eVkq2-9eiCvZNPb5IcagCIXiJg07I4ZuhwAcDql49rF5-ZBEKzsTnWz_9Ahr8Yua1MIXW1peG6BmeqC5CxE_XsZAIK3hKj7aPgSbptz-rjh1IYrFaBK80kgdCWiRsP4J_vJP29bBSlxuS_Iftrhub6i998QpqyGZdUe7XM4Rfo6cLFQqZROAyhEYxjvjqVvuln93bj817FnymkqtBubzFo8KS3RbmhhgC1UMZUIigdePljMpr5FD8gsUEVpKHJU0mwvNe0wraSbR8ECLJnGVMKsly0_FO3k36A7zap-oKFDS5lg",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/clients/2a7f6650-047b-4c03-92bf-15c6b84f826f/authz/resource-server/permission?name=manage.permission.group.a509e729-b855-49c9-b164-47a48a082a92",
-					"protocol": "https",
-					"host": [
-						"{{keycloak_gran_permissions_host}}"
-					],
-					"path": [
-						"admin",
-						"realms",
-						"group-permissions-test",
-						"clients",
-						"2a7f6650-047b-4c03-92bf-15c6b84f826f",
-						"authz",
-						"resource-server",
-						"permission"
-					],
-					"query": [
-						{
-							"key": "name",
-							"value": "manage.permission.group.a509e729-b855-49c9-b164-47a48a082a92"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Clients",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"content-type": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICItZkFBZTZyYWwyUXRWQ1BFekotTExHSGRXWVpRZ3kwbWZKR0p5bzNhUDZzIn0.eyJleHAiOjE2ODU2NDc2MjAsImlhdCI6MTY4NTY0MDQyMCwianRpIjoiMjZkYWI1ODYtMjEzNy00ZGEwLWFlMTMtNjI4Mzg4MzQyYjU2IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI2NDc5Mzc2ZS01YmMzLTRkOWQtOTc3Yy1hZTllOGM5MzhjZDkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiOTBiNWRmMjEtMzU0ZS00ZWVhLTg0NmQtMzM3YTcyZDUyMzBlIiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiI5MGI1ZGYyMS0zNTRlLTRlZWEtODQ2ZC0zMzdhNzJkNTIzMGUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.c_lNKOI1np88zxVJNHGSAZcNnTbE9N_e4tTCEcrmqClr13EEQ9LafkPUjfnWUpxCWPqzyqC2xhKRQwgJ4bk5hgjzHJ5lTnz1UhwO8aSBuIF4CHNqd8d0xZFyz-ENWA2ssMFRS4d_p1klmckzukPctueZAQT91Kc9PH23SazYjeJoa6x_3UFKlgQG9FjDu_jyMndeX0mgVr5xbwFXRhQfQ4E9EUTVhfoT5nO10qtfA1_7mzmjWXsraUtxNSuqgmNLCaiZPNfyV9_5lLHkhhmzHJi_Nspofx2nczoPBGCfFlDN5yQIiG3swiS3Rn4Ol3buQ4ZgyQOTilbWkUpwuASK_Q",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/clients?clientId=realm-management",
-					"protocol": "https",
-					"host": [
-						"{{keycloak_gran_permissions_host}}"
-					],
-					"path": [
-						"admin",
-						"realms",
-						"group-permissions-test",
+						"{{realm}}",
 						"clients"
 					],
 					"query": [
@@ -1396,7 +639,21 @@
 			"response": []
 		},
 		{
-			"name": "Get Realm Roles Search - Metadata",
+			"name": "Get Group Admin Role Search - Metadata",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var groupAdminRoleInfo = pm.response.json();",
+							"pm.globals.set(\"groupAdminRoleID\", groupAdminRoleInfo[0].id);",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
 					"content-type": true
@@ -1408,7 +665,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJoazhaWkRNS2c5NUF5N0JNbHhUbU1EZWJSYUZUR19jUmtQdnV6VEZoTnpRIn0.eyJleHAiOjE2ODU3MzE0MzQsImlhdCI6MTY4NTczMTM3NCwianRpIjoiZDQxNmMxZjUtNWI3Yi00NjFhLWI0NTYtOTE2MTk2ZWRlYmJjIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiIyODRhM2JjYS1kMzhmLTRkOTUtYWIxZC02ZDQ0YTM2MWZlYWEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiNjRhNzZkMzItYjZiYy00OGI0LWExNjAtMDg5ODY2YWEwZmFlIiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIGVtYWlsIHByb2ZpbGUiLCJzaWQiOiI2NGE3NmQzMi1iNmJjLTQ4YjQtYTE2MC0wODk4NjZhYTBmYWUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.SzsYic7sT626xMxCnPqPcUwtWY6iobUVwujOtrBjjXU-WoXbEjXUq_5V5cGlFzT4vMDM77-1iHqGurIo2eQkUYh7eQIwGIp7hh5xcP8jvUMW-aW1ErBGj80iwMqLrO4cZNjIZukifdvbwmTl2m8wEZmy4ofnw50mwtQrbayyyaa6D_sjAijNNQJt8IoYqpszUYjltoG4r0LEDR9FgEo5GEAI3nJ6TzPuXiBW3OK4EG60ILdnA_3aytLkaX9r-SuhL9RxO_jtvAtGz_d05sllDjvh8KpQ0VzfJ7xncXb33o5usj9vVRpOiI-z445oTkXC9WtCcDdnFE13BIr8vKGOwA",
+							"value": "{{bearerToken}}",
 							"type": "string"
 						}
 					]
@@ -1422,21 +679,20 @@
 					}
 				],
 				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/master/roles?search=query-users",
-					"protocol": "https",
+					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/roles?search={{parentGroupName}}-group-admin-role",
 					"host": [
-						"{{keycloak_gran_permissions_host}}"
+						"{{keycloak_url_prefix}}"
 					],
 					"path": [
 						"admin",
 						"realms",
-						"master",
+						"{{realm}}",
 						"roles"
 					],
 					"query": [
 						{
 							"key": "search",
-							"value": "query-users"
+							"value": "{{parentGroupName}}-group-admin-role"
 						}
 					]
 				}
@@ -1444,7 +700,20 @@
 			"response": []
 		},
 		{
-			"name": "Get Client Roles Search - Metadata",
+			"name": "Get client role info - query-users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var queryUsersInfo = pm.response.json();",
+							"pm.globals.set(\"queryUsersRoleId\", queryUsersInfo[0].id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
 					"content-type": true
@@ -1456,7 +725,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJoazhaWkRNS2c5NUF5N0JNbHhUbU1EZWJSYUZUR19jUmtQdnV6VEZoTnpRIn0.eyJleHAiOjE2ODU3NDMyNzYsImlhdCI6MTY4NTczMjQ3NiwianRpIjoiZDBmNjFhMDMtZjEzZi00YzE2LWE2YTktYTkxOTZlOTk3NGZkIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiIyODRhM2JjYS1kMzhmLTRkOTUtYWIxZC02ZDQ0YTM2MWZlYWEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiNjk1Yjc5OGYtNGRkYS00ZjcyLWJkZGEtNDMxNDZiMjVhZGU1IiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIGVtYWlsIHByb2ZpbGUiLCJzaWQiOiI2OTViNzk4Zi00ZGRhLTRmNzItYmRkYS00MzE0NmIyNWFkZTUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.Z6VEfHsbLpUj8xnmy7NF4dGJcO-nJUyPsBRZawIE-vzcxh4jAQ70cRa3jBGkb7qPcSYaXqAwOulBZ_y2kvZfhzCJQG9vbG2YO2elBpmRYEe-Yb6wcz7PWnmV3HS0fhOZ0kmfmT5_akbhBosuBq6d7AVCXgzJP5GWGXXoDar-lOmadf-yyX4ddJ_ef0t0qfnsTc5xejboMI_4BS7AwMPCh2nTQ4Bk6jXIpLUkbz8xMQJYXjJYR1jvsrokHDGxRCPd9p6sregwBVP8nMLoHMnYH2MC6uOce13vBVSk8HlZ0VmE7s2PC4S7DhLcbrfLBmQE_sqC3MsP-8yam9wT8uwABg",
+							"value": "{{bearerToken}}",
 							"type": "string"
 						}
 					]
@@ -1465,22 +734,20 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/clients/c2e12b43-dea9-457d-a053-ac34f5fcfdfa/roles?search=query-users",
-					"protocol": "https",
+					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/clients/{{realmMgmtClientID}}/roles?search=query-users",
 					"host": [
-						"{{keycloak_gran_permissions_host}}"
+						"{{keycloak_url_prefix}}"
 					],
 					"path": [
 						"admin",
 						"realms",
-						"group-permissions-test",
+						"{{realm}}",
 						"clients",
-						"c2e12b43-dea9-457d-a053-ac34f5fcfdfa",
+						"{{realmMgmtClientID}}",
 						"roles"
 					],
 					"query": [
@@ -1494,7 +761,20 @@
 			"response": []
 		},
 		{
-			"name": "Get group metadata with ID",
+			"name": "Get client role info - query-groups",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var queryGroupsInfo = pm.response.json();",
+							"pm.globals.set(\"queryGroupsRoleId\", queryGroupsInfo[0].id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
 					"content-type": true
@@ -1506,7 +786,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJoazhaWkRNS2c5NUF5N0JNbHhUbU1EZWJSYUZUR19jUmtQdnV6VEZoTnpRIn0.eyJleHAiOjE2ODU3NDM2MDAsImlhdCI6MTY4NTczMjgwMCwianRpIjoiNmE5ZDVhODMtMzA4ZC00YTI4LWI3YWQtNTA0ODBlODNkNDllIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiIyODRhM2JjYS1kMzhmLTRkOTUtYWIxZC02ZDQ0YTM2MWZlYWEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiZmNjOTYwN2EtYzVkMi00NWU1LTg0MjYtN2Q3MjY5NmVlMjQyIiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIGVtYWlsIHByb2ZpbGUiLCJzaWQiOiJmY2M5NjA3YS1jNWQyLTQ1ZTUtODQyNi03ZDcyNjk2ZWUyNDIiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.I5I0ehTx5CCXZU8brRnvIhc_9VF6nzdvTyLlfr2v3ZB1C6hZDrBH2VF3ZpeeMyY80YnEDduV3UbKw8Km9Q_iP-Kb1MBUsxrVQO0mKRNBo2AhqNq_rw55-ZVQ-azAWHjr_iD-d4myLKeMRcvgJSzlcbMKV-ZTW9bQdOIgVTr8lP9U_F6nRX9pPM_Z_aR1fDYEm-jKz0Ft-0IgiSUXVlNHE5agaRNZN0Gg-N3ysphLy5rHDtdDTj6Wb-4oHuMmXS_hFJC2XTmsIL3H2VsBoNfJHUtR0H59xtCzMnXZ14g9gIjH2FZWagFmN1ybPdr-mbPFGokhQpVt3nK124u3fzm8fw",
+							"value": "{{bearerToken}}",
 							"type": "string"
 						}
 					]
@@ -1515,26 +795,26 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"url": {
-					"raw": "https://{{keycloak_gran_permissions_host}}/admin/realms/group-permissions-test/groups?search=admins",
-					"protocol": "https",
+					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/clients/{{realmMgmtClientID}}/roles?search=query-groups",
 					"host": [
-						"{{keycloak_gran_permissions_host}}"
+						"{{keycloak_url_prefix}}"
 					],
 					"path": [
 						"admin",
 						"realms",
-						"group-permissions-test",
-						"groups"
+						"{{realm}}",
+						"clients",
+						"{{realmMgmtClientID}}",
+						"roles"
 					],
 					"query": [
 						{
 							"key": "search",
-							"value": "admins"
+							"value": "query-groups"
 						}
 					]
 				}
@@ -1542,7 +822,7 @@
 			"response": []
 		},
 		{
-			"name": "Add client role to the Group",
+			"name": "Add group admin realm role to the admins group",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
 					"content-type": true
@@ -1554,7 +834,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJoazhaWkRNS2c5NUF5N0JNbHhUbU1EZWJSYUZUR19jUmtQdnV6VEZoTnpRIn0.eyJleHAiOjE2ODU3NDM3NDgsImlhdCI6MTY4NTczMjk0OCwianRpIjoiOTljZGQ2NGQtYzU3Zi00M2MyLWE3NzUtMTM4ZjFkYjI0MTlhIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiIyODRhM2JjYS1kMzhmLTRkOTUtYWIxZC02ZDQ0YTM2MWZlYWEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiNTQ4YjVjNjctNDljYi00ZTQ2LWJjMTgtMWE5NTViYjQ3N2M0IiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIGVtYWlsIHByb2ZpbGUiLCJzaWQiOiI1NDhiNWM2Ny00OWNiLTRlNDYtYmMxOC0xYTk1NWJiNDc3YzQiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.KHX4iy9l2sbXAdUYgt32qgmmp0eq3w1SfOwhBj1TA39S7x9rc_bE3p5KrsZtzY26LSmMLkP_4TYqRjA5qVd-Rj_XHn5nwRIeRZb23zHuYco4Ow3h-6wOunHVDm_f895Lp_s4nB80zGqAnB4Zbmq1OoBUZz_wGKNZ0yo9-J58UUepyxRIy6T3CpRx14_5xnyq8Q7OWEmbTOCeAJ8pHnlG7nDwVLIGAWIJ9kCn8TfJmKe0NyLx7Hte4WyhGYEjtmDMg9EF8Z0pk0YqDoxERQAF1k9-5ZjVnyqXGk7H5SRT11Q3ntN1SQtuhIvwoChXE0oBWgtfZFAIRmKsmkmrdXZS0g",
+							"value": "{{bearerToken}}",
 							"type": "string"
 						}
 					]
@@ -1563,42 +843,33 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"92358773-e618-49a4-94c7-6bbfe6c89ff5\",\n    \"name\": \"query-users\",\n    \"description\": \"${role_query-users}\"\n}"
+					"raw": "[{\n    \"id\": \"{{groupAdminRoleID}}\",\n    \"name\":\"{{parentGroupName}}-group-admin-role\"\n}]\n"
 				},
 				"url": {
-					"raw": "https://keycloak-fips-test.apps.fips-key.2vn8.p1.openshiftapps.com/admin/realms/group-permissions-test/groups/24695d7a-8580-4f03-91a4-490d8bb8d084/role-mappings/clients/c2e12b43-dea9-457d-a053-ac34f5fcfdfa",
-					"protocol": "https",
+					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/groups/{{adminsChildGroupID}}/role-mappings/realm",
 					"host": [
-						"keycloak-fips-test",
-						"apps",
-						"fips-key",
-						"2vn8",
-						"p1",
-						"openshiftapps",
-						"com"
+						"{{keycloak_url_prefix}}"
 					],
 					"path": [
 						"admin",
 						"realms",
-						"group-permissions-test",
+						"{{realm}}",
 						"groups",
-						"24695d7a-8580-4f03-91a4-490d8bb8d084",
+						"{{adminsChildGroupID}}",
 						"role-mappings",
-						"clients",
-						"c2e12b43-dea9-457d-a053-ac34f5fcfdfa"
+						"realm"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Add Client Role to the User",
+			"name": "Add required client roles to the admins Group",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
 					"content-type": true
@@ -1610,7 +881,166 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJoazhaWkRNS2c5NUF5N0JNbHhUbU1EZWJSYUZUR19jUmtQdnV6VEZoTnpRIn0.eyJleHAiOjE2ODU5NTIwMDYsImlhdCI6MTY4NTk0MTIwNiwianRpIjoiODdiNzc5MTgtNDBmZC00NTI4LWIwZjktYjA4MGIwMGViZjg0IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay1maXBzLXRlc3QuYXBwcy5maXBzLWtleS4ydm44LnAxLm9wZW5zaGlmdGFwcHMuY29tL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiIyODRhM2JjYS1kMzhmLTRkOTUtYWIxZC02ZDQ0YTM2MWZlYWEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiMzA4MjAwZDgtM2NkYy00MjAzLWI0NjgtNTE2NzI2YzFlYTBjIiwiYWNyIjoiMSIsInNjb3BlIjoib3BlbmlkIGVtYWlsIHByb2ZpbGUiLCJzaWQiOiIzMDgyMDBkOC0zY2RjLTQyMDMtYjQ2OC01MTY3MjZjMWVhMGMiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIn0.S0z9imGAygEEmrsRIxcrxTb7UmITOBWb-CjyOMlcaZRxZmY-Gy8fDIMh6HI9XU72v_C5uu4X5NfKIPGiBOf7mqHBwzZ50g7VxYYf1El1i_0zYLhqNXCZ3SGs-ZyhdtE_d_ATzeY9HZIgOK7ejfZ0TVhp4H1MaxbAmFM_1NhV-QCh_53B3uOHXgH03UbBRKXLKqF4ZffFA5oO36X63R0spn-PZPiKSF2vW315XzLLN2GEddwDZ6_aaq-iFYsr9TZ_5ietVjuG1FFihEXo2sypWTzHwWV99X-ZVu_4-GZVq4sthnxs3koZDHbw3bJIwsAK4ysWr4AjlcRUw0u-n7gTJQ",
+							"value": "{{bearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n    \"id\": \"{{queryUsersRoleId}}\",\n    \"name\": \"query-users\",\n    \"description\": \"${role_query-users}\"\n},\n{\n    \"id\": \"{{queryGroupsRoleId}}\",\n    \"name\": \"query-groups\",\n    \"description\": \"${role_query-groups}\"\n}]\n"
+				},
+				"url": {
+					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/groups/{{adminsChildGroupID}}/role-mappings/clients/{{realmMgmtClientID}}",
+					"host": [
+						"{{keycloak_url_prefix}}"
+					],
+					"path": [
+						"admin",
+						"realms",
+						"{{realm}}",
+						"groups",
+						"{{adminsChildGroupID}}",
+						"role-mappings",
+						"clients",
+						"{{realmMgmtClientID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "***Create a role based policy under realm management client - Update permissions with policy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(\"Policy is created succcessfully. Now going to update the each permission with the policy we created now.\")",
+							"var groupAdminPolicyInfo = pm.response.json();",
+							"pm.globals.set(\"groupAdminPolicyInfo\", groupAdminPolicyInfo);",
+							"",
+							"console.log(\"parentGranPermissionsInfo\",pm.globals.get(\"parentGranPermissionsInfo\"))",
+							"console.log(\"adminGranPermissionsInfo\",pm.globals.get(\"adminGranPermissionsInfo\") )",
+							"console.log(\"usersGranPermissionsInfo\",pm.globals.get(\"usersGranPermissionsInfo\") )",
+							"",
+							"",
+							"var allPermissionsIds = [];",
+							"",
+							"for (const [key, value] of Object.entries(pm.globals.get(\"parentGranPermissionsInfo\").scopePermissions)) {",
+							"  allPermissionsIds.push(value);",
+							"}",
+							"",
+							"for (const [key, value] of Object.entries(pm.globals.get(\"adminGranPermissionsInfo\").scopePermissions)) {",
+							"  allPermissionsIds.push(value);",
+							"}",
+							"",
+							"for (const [key, value] of Object.entries(pm.globals.get(\"usersGranPermissionsInfo\").scopePermissions)) {",
+							"  allPermissionsIds.push(value);",
+							"}",
+							"",
+							"console.log(\"All permissions IDS needs to be updated\", allPermissionsIds);",
+							"",
+							"function sendRequest(req) {",
+							"    return new Promise((resolve, reject) => {",
+							"        pm.sendRequest(req, (err, res) => {",
+							"            if (err) {",
+							"                return reject(err);",
+							"            }",
+							"",
+							"            return resolve(res);",
+							"        })",
+							"    });",
+							"}",
+							"",
+							"const _dummy = setInterval(() => {}, 900000);",
+							"",
+							"(async function main() {",
+							"    ",
+							"console.log(\"in async main to update each policy in sequential way\")",
+							"for (let i = 0; i < allPermissionsIds.length; i++) {",
+							"",
+							"    const permissionGetRequest = {",
+							"        url: `${pm.globals.get(\"keycloak_url_prefix\")}/admin/realms/${pm.collectionVariables.get(\"realm\")}/clients/${pm.globals.get(\"realmMgmtClientID\")}/authz/resource-server/permission/scope/`+allPermissionsIds[i],",
+							"        method: 'GET',",
+							"        header: { 'content-type': 'application/json', 'Authorization': `Bearer ${pm.globals.get(\"bearerToken\")}` }       ",
+							"    };",
+							"    const permissionResult = await sendRequest(permissionGetRequest);",
+							"",
+							"    const scopesGetRequest = {",
+							"        url: `${pm.globals.get(\"keycloak_url_prefix\")}/admin/realms/${pm.collectionVariables.get(\"realm\")}/clients/${pm.globals.get(\"realmMgmtClientID\")}/authz/resource-server/policy/`+allPermissionsIds[i]+'/scopes',",
+							"        method: 'GET',",
+							"        header: { 'content-type': 'application/json' , 'Authorization': `Bearer ${pm.globals.get(\"bearerToken\")}`  }       ",
+							"    };",
+							"    const scopesResult = await sendRequest(scopesGetRequest);",
+							"",
+							"    const resourcesGetRequest = {",
+							"        url: `${pm.globals.get(\"keycloak_url_prefix\")}/admin/realms/${pm.collectionVariables.get(\"realm\")}/clients/${pm.globals.get(\"realmMgmtClientID\")}/authz/resource-server/policy/`+allPermissionsIds[i]+'/resources',",
+							"        method: 'GET',",
+							"        header: { 'content-type': 'application/json' , 'Authorization': `Bearer ${pm.globals.get(\"bearerToken\")}`  }       ",
+							"    };",
+							"    const resourcesResult = await sendRequest(resourcesGetRequest);",
+							"",
+							"    var permissionBody = permissionResult.json();",
+							"    permissionBody.resources = [resourcesResult.json()[0]._id];",
+							"    permissionBody.scopes = [scopesResult.json()[0].id];",
+							"    permissionBody.policies = [groupAdminPolicyInfo.id];",
+							"    ",
+							"       console.log(\"update permission request - \", allPermissionsIds[i], permissionBody)",
+							"",
+							"",
+							"    const permissionUpdateRequest = {",
+							"        url: `${pm.globals.get(\"keycloak_url_prefix\")}/admin/realms/${pm.collectionVariables.get(\"realm\")}/clients/${pm.globals.get(\"realmMgmtClientID\")}/authz/resource-server/permission/scope/`+allPermissionsIds[i],",
+							"        method: 'PUT',",
+							"        header: { 'content-type': 'application/json' , 'Authorization': `Bearer ${pm.globals.get(\"bearerToken\")}`  },",
+							"        body: {",
+							"        mode: 'raw',",
+							"        raw: JSON.stringify(permissionBody)",
+							"    }",
+							"    };",
+							"        const result = await sendRequest(permissionUpdateRequest);",
+							"    ",
+							"}",
+							"",
+							"    clearInterval(_dummy)",
+							"",
+							"console.log(\"All the permissions have been updated with the policy.\")",
+							"",
+							"console.log(\"**** SCRIPT execution is completed. Check keycloak instance. ****\")",
+							"})();",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearerToken}}",
 							"type": "string"
 						}
 					]
@@ -1625,33 +1055,133 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "[{\"id\":\"e6caf754-1af5-408d-a282-56a7cbb5b3d8\",\"name\":\"view-users\",\"description\":\"${role_view-users}\"}]"
+					"raw": "{\"roles\":[{\"id\":\"{{groupAdminRoleID}}\",\"required\":true}],\"logic\":\"POSITIVE\",\"name\":\"{{parentGroupName}}-group-admin-role-policy\",\"description\":\"This role based policy will link the users to the admins of {{parentGroupName}}\"}"
 				},
 				"url": {
-					"raw": "https://keycloak-fips-test.apps.fips-key.2vn8.p1.openshiftapps.com/admin/realms/group-permissions-test/users/88de563a-c32b-4193-be3b-e8b7a04b5f1b/role-mappings/clients/c2e12b43-dea9-457d-a053-ac34f5fcfdfa",
-					"protocol": "https",
+					"raw": "{{keycloak_url_prefix}}/admin/realms/{{realm}}/clients/{{realmMgmtClientID}}/authz/resource-server/policy/role",
 					"host": [
-						"keycloak-fips-test",
-						"apps",
-						"fips-key",
-						"2vn8",
-						"p1",
-						"openshiftapps",
-						"com"
+						"{{keycloak_url_prefix}}"
 					],
 					"path": [
 						"admin",
 						"realms",
-						"group-permissions-test",
-						"users",
-						"88de563a-c32b-4193-be3b-e8b7a04b5f1b",
-						"role-mappings",
+						"{{realm}}",
 						"clients",
-						"c2e12b43-dea9-457d-a053-ac34f5fcfdfa"
+						"{{realmMgmtClientID}}",
+						"authz",
+						"resource-server",
+						"policy",
+						"role"
 					]
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					" console.log(\"Getting Token\");",
+					"",
+					"",
+					"const _dummy = setInterval(() => {}, 300000);",
+					"",
+					"function sendRequest(req) {",
+					"    return new Promise((resolve, reject) => {",
+					"        pm.sendRequest(req, (err, res) => {",
+					"            if (err) {",
+					"                return reject(err);",
+					"            }",
+					"",
+					"            return resolve(res);",
+					"        })",
+					"    });",
+					"}",
+					"",
+					"(async function main() {",
+					"",
+					"const tokenPostRequest = {",
+					"    url: `${pm.globals.get(\"keycloak_url_prefix\")}/realms/${pm.collectionVariables.get(\"tokenRealm\")}/protocol/openid-connect/token`,",
+					"    method: 'POST',",
+					"    header: { 'content-type': 'application/x-www-form-urlencoded' },",
+					"    body: {",
+					"    mode: 'urlencoded',",
+					"    urlencoded : [",
+					"      { key: 'client_id', value: 'admin-cli'},",
+					"      { key: 'grant_type', value: 'password'},",
+					"      { key: 'username', value: `${pm.collectionVariables.get(\"username\")}`},",
+					"      { key: 'password', value: `${pm.collectionVariables.get(\"password\")}`},",
+					"      { key: 'scope', value: 'openid'}",
+					"    ]",
+					"  }",
+					"};",
+					"    const result = await sendRequest(tokenPostRequest);",
+					"",
+					"    pm.globals.set(\"bearerToken\", result.json().access_token);",
+					"    pm.collectionVariables.set(\"bearerToken\", result.json().access_token);",
+					"",
+					"    clearInterval(_dummy)",
+					"})();",
+					"",
+					"",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "keycloak_url_prefix",
+			"value": "http://localhost:8080"
+		},
+		{
+			"key": "tokenRealm",
+			"value": "master",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": "admin"
+		},
+		{
+			"key": "password",
+			"value": "admin"
+		},
+		{
+			"key": "bearerToken",
+			"value": ""
+		},
+		{
+			"key": "parentGroupName",
+			"value": "customer1"
+		},
+		{
+			"key": "realm",
+			"value": "data_setup_automation"
+		},
+		{
+			"key": "parentGroupInfo",
+			"value": ""
+		},
+		{
+			"key": "orgAttributeName",
+			"value": "IDP Customer"
+		},
+		{
+			"key": "orgAttributeID",
+			"value": "1234"
 		}
 	]
 }
