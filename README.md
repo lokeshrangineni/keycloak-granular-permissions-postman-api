@@ -1,5 +1,5 @@
 ### Assumptions
-* This script is tested using keycloak version - 21.0.2.
+* This script is tested using keycloak version - 21.0.2. For any other keycloak versions we may need to test again or make changes to necessary API calls. 
 * As part of keycloak version 21.0.2, granular permissions is a preview feature. We need to enable preview features while running the keycloak instance. Please find [documentation here](https://www.keycloak.org/docs/latest/server_admin/#_fine_grain_permissions). This feature is required for this script to work without any errors.
 * This script creates groups, roles, policies, permissions. etc., so it is expected to have elevated privileges on keycloak to run this script.
 * for IDP customers, we are not adding any users. 
